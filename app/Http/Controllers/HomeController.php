@@ -21,12 +21,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+
+    public function index(Request $request)
     {
-        $request->users()->authorizeRoles(['driver', 'specialist','manager']);
+        $request->user()->authorizeRoles(['employee', 'manager']);
+
         return view('home');
     }
-
 
     /*
     public function someAdminStuff(Request $request)
@@ -36,10 +38,4 @@ class HomeController extends Controller
       return view(‘some.view’);
     }
     */
-
-
-
-
-
-
 }

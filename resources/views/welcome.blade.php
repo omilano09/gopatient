@@ -80,7 +80,7 @@
             <div class="content">
                 <div><img src="/img/logo.jpg"></div>
                 <div class="title m-b-md">
-                    GoPacient
+                    GoPatient
                 </div>
 
                 <div class="links">
