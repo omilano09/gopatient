@@ -16,6 +16,7 @@ class UserTableSeeder extends Seeder
     {
         $role_driver = Roles::where('name', 'driver')->first();
         $role_manager  = Roles::where('name', 'manager')->first();
+        $role_client = Roles::where('name', 'client')->first();
 
         $driver = new Users();
         $driver->name = 'Driver Name';
