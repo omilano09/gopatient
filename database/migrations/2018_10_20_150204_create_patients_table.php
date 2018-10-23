@@ -18,13 +18,20 @@ class CreatePatientsTable extends Migration
             $table->string('names');
             $table->string('last_names');
             $table->string('dni');
-            $table->string('phone')->default(null);
-            $table->text('address');
-            $table->string('driver_id')->default(null);
+            $table->string('phone')->default(null);            
+
+            //esto verificar
             $table->string('city_id');
+            $table->string('driver_id');
+            $table->text('address');
             $table->string('zip_code');
+
+            //foreign keys
+            //fixme quitar nullable, debe lllegar de la pantalla
+            $table->unsignedInteger('addresses_id')->nullable();
+            $table->foreign('addresses_id')->references('id')->on('addresses');
+
             $table->timestamps();
-            //$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
