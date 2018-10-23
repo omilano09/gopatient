@@ -14,21 +14,23 @@ class CreateTripsTable extends Migration
     public function up()
     {
         Schema::create('trips', function (Blueprint $table) {
-            $table->increments('trips_id');
+            $table->increments('id');
             $table->string('reference_number');
             $table->date('date');
             $table->string('notes');
             $table->integer('aditional_passenger_count');
-            $table->timestamps();
 
+            //foreign keys
             $table->unsignedInteger('trip_statuses_id');
-            $table->foreign('trip_statuses_id')->references('trip_statuses_id')->on('trip_statuses');
+            $table->foreign('trip_statuses_id')->references('id')->on('trip_statuses');
 
             $table->unsignedInteger('drivers_id');
-            $table->foreign('drivers_id')->references('drivers_id')->on('drivers');
+            $table->foreign('drivers_id')->references('id')->on('drivers');
 
             $table->unsignedInteger('patients_id');
-            $table->foreign('patients_id')->references('patients_id')->on('patients');
+            $table->foreign('patients_id')->references('id')->on('patients');
+
+            $table->timestamps();
         });
     }
 

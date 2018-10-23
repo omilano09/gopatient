@@ -14,14 +14,24 @@ class CreatePatientsTable extends Migration
     public function up()
     {
         Schema::create('patients', function (Blueprint $table) {
-            $table->increments('patients_id');
-            $table->string('name');
-            $table->string('last_name');
-            $table->string('phone');
-            $table->timestamps();
+            $table->increments('id');
+            $table->string('names');
+            $table->string('last_names');
+            $table->string('dni');
+            $table->string('phone')->default(null);            
 
-            $table->unsignedInteger('addresses_id');
-            $table->foreign('addresses_id')->references('addresses_id')->on('addresses');
+            //esto verificar
+            $table->string('city_id');
+            $table->string('driver_id');
+            $table->text('address');
+            $table->string('zip_code');
+
+            //foreign keys
+            //fixme quitar nullable, debe lllegar de la pantalla
+            $table->unsignedInteger('addresses_id')->nullable();
+            $table->foreign('addresses_id')->references('id')->on('addresses');
+
+            $table->timestamps();
         });
     }
 

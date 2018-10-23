@@ -14,18 +14,18 @@ class CreateTripsAddresses extends Migration
     public function up()
     {
         Schema::create('trips_addresses', function (Blueprint $table) {
-            $table->increments('trips_addresses_id');
-
-            $table->unsignedInteger('trips_id');
-            $table->foreign('trips_id')->references('trips_id')->on('trips');
-
-            $table->unsignedInteger('addresses_id');
-            $table->foreign('addresses_id')->references('addresses_id')->on('addresses');
-
+            $table->increments('id');
             $table->integer('order');
             $table->dateTime('pickup_time');
             $table->dateTime('app_time');
             $table->boolean('app_call');
+
+            //foreign keys
+            $table->unsignedInteger('trips_id');
+            $table->foreign('trips_id')->references('id')->on('trips');
+
+            $table->unsignedInteger('addresses_id');
+            $table->foreign('addresses_id')->references('id')->on('addresses');
 
             $table->timestamps();
         });

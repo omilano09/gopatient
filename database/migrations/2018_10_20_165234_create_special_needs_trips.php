@@ -14,13 +14,14 @@ class CreateSpecialNeedsTrips extends Migration
     public function up()
     {
         Schema::create('special_needs_trips', function (Blueprint $table) {
-            $table->increments('special_needs_trips_id');
+            $table->increments('id');
 
+            //foreign keys
             $table->unsignedInteger('special_needs_id');
-            $table->foreign('special_needs_id')->references('special_needs_id')->on('special_needs');
+            $table->foreign('special_needs_id')->references('id')->on('special_needs');
 
             $table->unsignedInteger('trips_id');
-            $table->foreign('trips_id')->references('trips_id')->on('trips');
+            $table->foreign('trips_id')->references('id')->on('trips');
 
             $table->timestamps();
         });

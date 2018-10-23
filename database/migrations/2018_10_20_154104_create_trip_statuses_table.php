@@ -14,7 +14,7 @@ class CreateTripStatusesTable extends Migration
     public function up()
     {
         Schema::create('trip_statuses', function (Blueprint $table) {
-            $table->increments('trip_statuses_id');
+            $table->increments('id');
             $table->string('name');
             $table->timestamps();
         });

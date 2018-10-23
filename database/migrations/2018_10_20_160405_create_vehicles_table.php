@@ -14,18 +14,20 @@ class CreateVehiclesTable extends Migration
     public function up()
     {
         Schema::create('vehicles', function (Blueprint $table) {
-            $table->increments('vehicles_id');
+            $table->increments('id');
             $table->string('brand');
             $table->string('model');
             $table->integer('year');
             $table->integer('seats');
-            $table->timestamps();
 
+            //foreign keys
             $table->unsignedInteger('vehicle_types_id');
-            $table->foreign('vehicle_types_id')->references('vehicle_types_id')->on('vehicle_types');
+            $table->foreign('vehicle_types_id')->references('id')->on('vehicle_types');
 
             $table->unsignedInteger('drivers_id');
-            $table->foreign('drivers_id')->references('drivers_id')->on('drivers');
+            $table->foreign('drivers_id')->references('id')->on('drivers');
+
+            $table->timestamps();
         });
     }
 
